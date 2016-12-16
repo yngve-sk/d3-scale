@@ -26,6 +26,10 @@ export {
 } from "./src/pow";
 
 export {
+  default as scaleRadial
+} from "./src/radial";
+
+export {
   default as scaleQuantile
 } from "./src/quantile";
 
