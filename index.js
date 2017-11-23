@@ -1,83 +1,107 @@
 export {
+  default as scaleBandVarying
+}
+from "./src/bandvarying.js";
+
+export {
   default as scaleBand,
   point as scalePoint
-} from "./src/band";
+}
+from "./src/band";
 
 export {
   default as scaleIdentity
-} from "./src/identity";
+}
+from "./src/identity";
 
 export {
   default as scaleLinear
-} from "./src/linear";
+}
+from "./src/linear";
 
 export {
   default as scaleLog
-} from "./src/log";
+}
+from "./src/log";
 
 export {
   default as scaleOrdinal,
   implicit as scaleImplicit
-} from "./src/ordinal";
+}
+from "./src/ordinal";
 
 export {
   default as scalePow,
   sqrt as scaleSqrt
-} from "./src/pow";
+}
+from "./src/pow";
 
 export {
   default as scaleQuantile
-} from "./src/quantile";
+}
+from "./src/quantile";
 
 export {
   default as scaleQuantize
-} from "./src/quantize";
+}
+from "./src/quantize";
 
 export {
   default as scaleThreshold
-} from "./src/threshold";
+}
+from "./src/threshold";
 
 export {
   default as scaleTime
-} from "./src/time";
+}
+from "./src/time";
 
 export {
   default as scaleUtc
-} from "./src/utcTime";
+}
+from "./src/utcTime";
 
 export {
   default as schemeCategory10
-} from "./src/category10";
+}
+from "./src/category10";
 
 export {
   default as schemeCategory20b
-} from "./src/category20b";
+}
+from "./src/category20b";
 
 export {
   default as schemeCategory20c
-} from "./src/category20c";
+}
+from "./src/category20c";
 
 export {
   default as schemeCategory20
-} from "./src/category20";
+}
+from "./src/category20";
 
 export {
   default as interpolateCubehelixDefault
-} from "./src/cubehelix";
+}
+from "./src/cubehelix";
 
 export {
   default as interpolateRainbow,
   warm as interpolateWarm,
   cool as interpolateCool
-} from "./src/rainbow";
+}
+from "./src/rainbow";
 
 export {
   default as interpolateViridis,
   magma as interpolateMagma,
   inferno as interpolateInferno,
   plasma as interpolatePlasma
-} from "./src/viridis";
+}
+from "./src/viridis";
 
 export {
   default as scaleSequential
-} from "./src/sequential";
+}
+from "./src/sequential";
