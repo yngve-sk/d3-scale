@@ -34,7 +34,8 @@
     "d3-format": "1",
     "d3-interpolate": "1",
     "d3-time": "1",
-    "d3-time-format": "2"
+    "d3-time-format": "2",
+    "preamble": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "3",

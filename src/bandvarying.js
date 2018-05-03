@@ -58,6 +58,7 @@ export default function band() {
     }
 
     function rescaleVarying() {
+        // console.log("DURR!")
         var n = domain().length,
             reverse = range[1] < range[0],
             start = range[reverse - 0],
@@ -80,18 +81,24 @@ export default function band() {
         }
 
         var totalLength = stop - start,
-            innerPaddingStep = paddingInner * totalLength,
-            outerPaddingStep = paddingOuter * totalLength;
+            outerPaddingLength = paddingOuter * totalLength,
+            innerLength = totalLength - outerPaddingLength,
+            innerPaddingLength = n === 1 ? 0 : innerLength * paddingInner,
+            innerPaddingStep = n === 1 ? 0 : innerPaddingLength / (n - 1),
+            // innerPaddingStep = n === 1 ? 0 : paddingInner * totalLength / (n - 1),
+            outerPaddingStep = outerPaddingLength / 2,
+            barsLength = innerLength - innerPaddingLength - outerPaddingLength;
 
-        var outerPaddingLength = outerPaddingStep * 2,
-            innerPaddingLength = innerPaddingStep * (n - 1),
-            barsLength = totalLength - outerPaddingLength - innerPaddingLength;
+        // var outerPaddingLength = outerPaddingStep * 2,
+        //     innerPaddingLength = n === 1 ? 0 : innerPaddingStep * (n - 1),
+        //     barsLength = totalLength - outerPaddingLength - innerPaddingLength;
 
-        if (barsLength < 0.1 * totalLength) {
-            barsLength = 0.1 * totalLength;
-            innerPaddingLength = totalLength - barsLength - outerPaddingLength;
-            innerPaddingStep = innerPaddingLength / (n - 1);
-        }
+
+        // if (barsLength < 0.1 * totalLength) {
+        //     barsLength = 0.1 * totalLength;
+        //     innerPaddingLength = totalLength - barsLength - outerPaddingLength;
+        //     innerPaddingStep = innerPaddingLength / (n - 1);
+        // }
 
         function stepFunc(i) {
             return barsLength * ratioCache[i];
@@ -101,12 +108,14 @@ export default function band() {
             return stepFunc(i) + innerPaddingStep;
         }
 
-        var offset = start + outerPaddingStep + (innerPaddingStep / 2) - bandwidthFunc(0) * (align + 0.5);
+        var offset = start + (2 * outerPaddingStep) + (outerPaddingStep / n) - (innerPaddingStep/4) - (innerLength / (2 * n)); // - (bandwidthFunc(n - 1) - bandwidthFunc(0) / 2); // * (align);
+
+        // console.log(`start ${start}, stop ${stop} (0): ${bandwidthFunc(0)}, (n-1): ${bandwidthFunc(n-1)}, outerPaddingStep: ${outerPaddingStep}, innerPaddingStep: ${innerPaddingStep}`);
 
         var values = [],
             myLength;
 
-        offset += stepFunc(0) / 4;
+        // offset += stepFunc(0) / 4;
         for (i = 0; i < n; ++i) {
             myLength = stepFunc(i);
             values[i] = offset + myLength / 2;
